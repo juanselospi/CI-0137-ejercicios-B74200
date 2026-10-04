@@ -1,0 +1,316 @@
+:root {
+  /* colores */
+  --color-fondo: #000000;
+  --color-panel: #05090d;
+  --color-texto: #e6f7ff;
+  --color-texto-suave: #9fb8c8;
+  --color-cian: #00e5ff;
+  --color-naranja: #ff9a1f;
+  --color-borde: #0f4652;
+  --color-fila: #0a1a20;
+  --color-cuadricula: rgba(0, 229, 255, 0.06);
+
+  /* tipografía */
+  --fuente-texto: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --fuente-titulos: Consolas, "Lucida Console", "Courier New", monospace;
+
+  /* espaciado y otros */
+  --espacio: 1rem;
+  --radio: 0.5rem;
+  --brillo-cian: 0 0 0.75rem rgba(0, 229, 255, 0.35);
+  --brillo-naranja: 0 0 0.5rem rgba(255, 154, 31, 0.5);
+}
+
+/* esquema de colores */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-fondo: #eef5f7;
+    --color-panel: #ffffff;
+    --color-texto: #0b1a22;
+    --color-texto-suave: #45606e;
+    --color-cian: #006c7a;
+    --color-naranja: #a14b00;
+    --color-borde: #b5d3db;
+    --color-fila: #e6f2f5;
+    --color-cuadricula: rgba(0, 108, 122, 0.08);
+    --brillo-cian: 0 0 0.75rem rgba(0, 108, 122, 0.25);
+    --brillo-naranja: 0 0 0.5rem rgba(161, 75, 0, 0.25);
+  }
+}
+
+/* para que el padding y el borde no le sumen al ancho de las cajas */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0 auto;
+  max-width: 75rem;
+  padding: var(--espacio);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-texto);
+  background-color: var(--color-fondo);
+  
+  /* cuadrícula tipo TRON que es la tematica que elegí, son dos gradientes de 1px que se repiten */
+  background-image:
+    linear-gradient(var(--color-cuadricula) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-cuadricula) 1px, transparent 1px);
+  background-size: 2.5rem 2.5rem;
+
+  display: grid;
+
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--espacio);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--fuente-titulos);
+  line-height: 1.2;
+  margin: 0 0 calc(var(--espacio) * 0.75);
+}
+
+h1 {
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow: var(--brillo-cian);
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: var(--color-cian);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+h3 {
+  font-size: 1.05rem;
+  margin-top: calc(var(--espacio) * 1.5);
+}
+
+p {
+  margin: 0 0 var(--espacio);
+}
+
+ul,
+ol {
+  margin: 0 0 var(--espacio);
+  padding-left: 1.25rem;
+}
+
+li {
+  margin-bottom: 0.35rem;
+}
+
+/* los enlaces van en cian y subrayados */
+a {
+  color: var(--color-cian);
+  text-decoration: underline;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-naranja);
+  text-shadow: var(--brillo-naranja);
+}
+
+/* contorno visible para cuando se navega con teclado */
+a:focus-visible {
+  outline: 2px solid var(--color-naranja);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* el encabezado funciona como la barra lateral izquierda */
+.barra-lateral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: calc(var(--espacio) * 1.5) var(--espacio);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-cian);
+  border-radius: var(--radio);
+  box-shadow: var(--brillo-cian);
+}
+
+.contenido {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio);
+}
+
+/* en el HTML la foto va después del nombre, usanndo order la subo visualmente sin tocar el HTML */
+.foto-perfil {
+  order: -1;
+  width: 9rem;
+  height: 9rem;
+  object-fit: cover;
+  object-position: center 20%;
+  border-radius: 50%;
+  border: 3px solid var(--color-cian);
+  box-shadow: var(--brillo-cian);
+  margin-bottom: var(--espacio);
+}
+
+.subtitulo {
+  color: var(--color-texto-suave);
+}
+
+.contacto {
+  width: 100%;
+  text-align: left;
+  margin-top: var(--espacio);
+}
+
+.contacto address {
+  font-style: normal;
+  /* para que los correos y links largos no se salgan de la caja en celular */
+  overflow-wrap: break-word;
+}
+
+.contacto ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.contacto li {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--color-borde);
+}
+
+.contenido > section {
+  padding: calc(var(--espacio) * 0.75);
+  background-color: var(--color-panel);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio);
+}
+
+/* línea de luz a la izquierda como las motos de TRON */
+.tarjeta {
+  padding-left: var(--espacio);
+  border-left: 3px solid var(--color-cian);
+  margin-bottom: calc(var(--espacio) * 1.5);
+}
+
+.tarjeta h3 {
+  margin-top: 0;
+}
+
+.fecha {
+  font-family: var(--fuente-titulos);
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
+}
+
+.tabla {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+  /* en celular la tabla de 4 columnas no va a caber, así las palabras largas se parten con guion, esto funciona por el lang=es */
+  hyphens: auto;
+  margin-bottom: calc(var(--espacio) * 1.5);
+}
+
+.tabla caption {
+  caption-side: top;
+  text-align: left;
+  font-style: italic;
+  color: var(--color-texto-suave);
+  padding-bottom: 0.5rem;
+}
+
+.tabla th,
+.tabla td {
+  padding: 0.5rem 0.3rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.tabla thead th {
+  color: var(--color-cian);
+  border-bottom: 2px solid var(--color-cian);
+}
+
+/* filas alternadas para que se lea más fácil */
+.tabla tbody tr:nth-child(even) {
+  background-color: var(--color-fila);
+}
+
+.tabla tbody tr:hover {
+  background-color: var(--color-borde);
+}
+
+.pie {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--color-texto-suave);
+  padding-top: var(--espacio);
+  border-top: 1px solid var(--color-cian);
+}
+
+.pie p {
+  margin-bottom: 0.25rem;
+}
+
+
+/* barra lateral a la izquierda y contenido a la derecha */
+@media (min-width: 48em) {
+  body {
+    grid-template-columns: 18rem minmax(0, 1fr);
+    grid-template-areas:
+      "lateral contenido"
+      "pie pie";
+    gap: calc(var(--espacio) * 1.5);
+    padding: calc(var(--espacio) * 2);
+  }
+
+  .barra-lateral {
+    grid-area: lateral;
+    /* para que la barra no se estire hasta el final del contenido */
+    align-self: start;
+  }
+
+  .contenido {
+    grid-area: contenido;
+  }
+
+  .pie {
+    grid-area: pie;
+  }
+
+  /* la barra lateral es angosta, entonces achico un poco el nombre */
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .contenido > section {
+    padding: calc(var(--espacio) * 1.5);
+  }
+
+  /* en escritorio sí hay espacio, entonces ya no hace falta partir palabras */
+  .tabla {
+    font-size: 1rem;
+    hyphens: manual;
+  }
+
+  .tabla th,
+  .tabla td {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .tabla thead th {
+    font-family: var(--fuente-titulos);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+}
