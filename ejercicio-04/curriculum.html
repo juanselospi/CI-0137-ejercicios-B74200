@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Currículum de Juan Sebastián Loaiza Ospina, estudiante de Ciencias de la Computación en la Universidad de Costa Rica.">
+  <title>Currículum — Juan Sebastián Loaiza Ospina</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="barra-lateral">
+    <h1>Juan Sebastián Loaiza Ospina</h1>
+    <p class="subtitulo">Estudiante de Ciencias de la Computación — Universidad de Costa Rica</p>
+
+    <button type="button" id="boton-tema" class="boton-tema">Modo claro</button>
+
+    <img class="foto-perfil" src="assets/img/McLovin.png"
+         alt="Fotografía de perfil de Juan Sebastián Loaiza Ospina"
+         width="180" height="200">
+
+    <section class="contacto">
+      <h2>Datos de contacto</h2>
+      <address>
+        <ul>
+          <li>Correo electrónico: <a href="mailto:juanselospi@gmail.com">juanselospi@gmail.com</a></li>
+          <li>Teléfono: <a href="tel:+50684328100">8432-8100</a></li>
+          <li>Ubicación: Calle Masis 202, San Pedro, Costa Rica</li>
+          <li>GitHub:
+            <a href="https://github.com/juanselospi" target="_blank" rel="noopener">github.com/juanselospi</a>
+          </li>
+          <li>LinkedIn:
+            <a href="https://www.linkedin.com/in/juanselospi" target="_blank" rel="noopener">linkedin.com/in/juanselospi</a>
+          </li>
+        </ul>
+      </address>
+    </section>
+  </header>
+
+  <main class="contenido">
+
+    <section>
+      <h2>Perfil profesional</h2>
+      <p>
+        Estudiante de Ciencias de la Computación en la
+        <a href="https://www.ucr.ac.cr" target="_blank" rel="noopener">Universidad de Costa Rica</a>,
+        con formación previa en Ingeniería Mecánica y tres años de experiencia profesional en
+        desarrollo de software dentro de Amazon. Me interesa el desarrollo de sistemas, la
+        programación orientada a objetos y el desarrollo de videojuegos y simulaciones con
+        Unity Engine. Combino una base sólida en resolución de problemas de ingeniería con
+        experiencia práctica construyendo software en equipos grandes.
+      </p>
+    </section>
+
+    <section>
+      <h2>Experiencia laboral</h2>
+      <div id="lista-experiencia"></div>
+    </section>
+
+    <section>
+      <h2>Formación académica</h2>
+      <div id="lista-formacion"></div>
+
+      <h3>Resumen de estudios</h3>
+      <table class="tabla">
+        <caption>Programas académicos cursados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Programa</th>
+            <th scope="col">Institución</th>
+            <th scope="col">Período</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-estudios"></tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Habilidades</h2>
+
+      <h3>Habilidades técnicas</h3>
+      <table class="tabla">
+        <caption>Tecnologías y herramientas con nivel de dominio</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tecnología</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Nivel</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-tecnicas"></tbody>
+      </table>
+
+      <h3>Habilidades blandas</h3>
+      <ul id="lista-blandas"></ul>
+
+      <h3>Idiomas</h3>
+      <table class="tabla">
+        <caption>Idiomas y nivel de dominio según el Marco Común Europeo de Referencia</caption>
+        <thead>
+          <tr>
+            <th scope="col">Idioma</th>
+            <th scope="col">Nivel</th>
+          </tr>
+        </thead>
+        <tbody id="tabla-idiomas"></tbody>
+      </table>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>
+      Curso CI-0137 Desarrollo de Aplicaciones Web — Universidad de Costa Rica ·
+      Carné B74200
+    </p>
+    <p>
+      Última actualización: <time datetime="2026-11-18">18 de noviembre de 2026</time>
+    </p>
+  </footer>
+
+</body>
+</html>
