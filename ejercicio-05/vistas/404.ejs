@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("parciales/head", { titulo: "Página no encontrada" }) %>
+<body class="pagina-simple">
+
+  <main class="contenido">
+    <section>
+      <h2>Error 404</h2>
+      <p>La página <code><%= ruta %></code> no existe.</p>
+      <p><a href="/">Volver al currículum</a></p>
+    </section>
+  </main>
+
+  <%- include("parciales/pie") %>
+
+</body>
+</html>

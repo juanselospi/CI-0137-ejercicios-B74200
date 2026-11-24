@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("parciales/head", { titulo: "Currículum — " + nombre }) %>
+<body>
+
+  <header class="barra-lateral">
+    <h1><%= nombre %></h1>
+    <p class="subtitulo"><%= subtitulo %></p>
+
+    <button type="button" id="boton-tema" class="boton-tema">Modo claro</button>
+
+    <img class="foto-perfil" src="/assets/img/McLovin.png"
+         alt="Fotografía de perfil de <%= nombre %>"
+         width="180" height="200">
+
+    <section class="contacto">
+      <h2>Datos de contacto</h2>
+      <address>
+        <ul>
+          <li>Correo electrónico: <a href="mailto:<%= contacto.correo %>"><%= contacto.correo %></a></li>
+          <li>Teléfono: <a href="tel:<%= contacto.telefonoLink %>"><%= contacto.telefono %></a></li>
+          <li>Ubicación: <%= contacto.ubicacion %></li>
+          <li>GitHub:
+            <a href="https://github.com/<%= contacto.github %>" target="_blank" rel="noopener">github.com/<%= contacto.github %></a>
+          </li>
+          <li>LinkedIn:
+            <a href="https://www.linkedin.com/in/<%= contacto.linkedin %>" target="_blank" rel="noopener">linkedin.com/in/<%= contacto.linkedin %></a>
+          </li>
+        </ul>
+      </address>
+    </section>
+  </header>
+
+  <main class="contenido">
+
+    <section>
+      <h2>Perfil profesional</h2>
+      <p>
+        <%= perfil.antes %><a href="<%= perfil.enlace.url %>" target="_blank" rel="noopener"><%= perfil.enlace.texto %></a><%= perfil.despues %>
+      </p>
+    </section>
+
+    <section>
+      <h2>Experiencia laboral</h2>
+      <% experiencia.forEach(function (trabajo) { %>
+        <article class="tarjeta">
+          <h3><%= trabajo.puesto %></h3>
+          <p class="fecha">
+            <time datetime="<%= trabajo.inicio %>"><%= trabajo.inicio %></time> –
+            <% if (trabajo.fin) { %><time datetime="<%= trabajo.fin %>"><%= trabajo.fin %></time><% } else { %>actualidad<% } %>
+            · Proyecto <em><%= trabajo.proyecto %></em>
+          </p>
+          <ol>
+            <% trabajo.logros.forEach(function (logro) { %>
+              <% if (typeof logro === "string") { %>
+                <li><%= logro %></li>
+              <% } else { %>
+                <li><%= logro.antes %><i lang="en"><%= logro.ingles %></i><%= logro.despues %></li>
+              <% } %>
+            <% }); %>
+          </ol>
+        </article>
+      <% }); %>
+    </section>
+
+    <section>
+      <h2>Formación académica</h2>
+      <% formacion.forEach(function (estudio) { %>
+        <article class="tarjeta">
+          <h3><%= estudio.titulo %></h3>
+          <p class="fecha">
+            <%= estudio.institucion %> ·
+            <time datetime="<%= estudio.inicio %>"><%= estudio.inicio %></time> –
+            <% if (estudio.fin) { %><time datetime="<%= estudio.fin %>"><%= estudio.fin %></time><% } else { %>actualidad<% } %>
+            (<%= estudio.nota %>)
+          </p>
+          <ul>
+            <% estudio.detalles.forEach(function (detalle) { %>
+              <li><%= detalle %></li>
+            <% }); %>
+          </ul>
+        </article>
+      <% }); %>
+
+      <h3>Resumen de estudios</h3>
+      <table class="tabla">
+        <caption>Programas académicos cursados</caption>
+        <thead>
+          <tr>
+            <th scope="col">Programa</th>
+            <th scope="col">Institución</th>
+            <th scope="col">Período</th>
+            <th scope="col">Estado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% formacion.forEach(function (estudio) { %>
+            <tr>
+              <th scope="row"><%= estudio.programa %></th>
+              <td><%= estudio.institucion %></td>
+              <td><%= estudio.inicio %> – <%= estudio.fin || "actualidad" %></td>
+              <td><%= estudio.estado %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Habilidades</h2>
+
+      <h3>Habilidades técnicas</h3>
+      <table class="tabla">
+        <caption>Tecnologías y herramientas con nivel de dominio</caption>
+        <thead>
+          <tr>
+            <th scope="col">Tecnología</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Nivel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% habilidadesTecnicas.forEach(function (habilidad) { %>
+            <tr>
+              <th scope="row"><%= habilidad.tecnologia %></th>
+              <td><%= habilidad.categoria %></td>
+              <td><%= habilidad.nivel %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <h3>Habilidades blandas</h3>
+      <ul>
+        <% habilidadesBlandas.forEach(function (habilidad) { %>
+          <li><%= habilidad %></li>
+        <% }); %>
+      </ul>
+
+      <h3>Idiomas</h3>
+      <table class="tabla">
+        <caption>Idiomas y nivel de dominio según el Marco Común Europeo de Referencia</caption>
+        <thead>
+          <tr>
+            <th scope="col">Idioma</th>
+            <th scope="col">Nivel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% idiomas.forEach(function (item) { %>
+            <tr>
+              <th scope="row"><%= item.idioma %></th>
+              <td><%= item.nivel %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="contacto">
+      <h2>Contáctame</h2>
+      <form class="formulario" action="/contacto" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" autocomplete="name" required>
+
+        <label for="correo">Correo electrónico</label>
+        <input type="email" id="correo" name="correo" autocomplete="email" required>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+
+        <button type="submit" class="boton-enviar">Enviar</button>
+      </form>
+    </section>
+
+  </main>
+
+  <%- include("parciales/pie") %>
+
+</body>
+</html>

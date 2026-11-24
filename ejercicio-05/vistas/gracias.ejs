@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<%- include("parciales/head", { titulo: "Mensaje enviado" }) %>
+<body class="pagina-simple">
+
+  <main class="contenido">
+    <section>
+      <h2>¡Gracias, <%= nombre %>!</h2>
+      <p>Recibí tu mensaje, te voy a responder a <strong><%= correo %></strong> lo antes posible.</p>
+
+      <h3>Tu mensaje</h3>
+      <p class="mensaje-recibido"><%= mensaje %></p>
+
+      <p><a href="/">Volver al currículum</a></p>
+    </section>
+  </main>
+
+  <%- include("parciales/pie") %>
+
+</body>
+</html>
